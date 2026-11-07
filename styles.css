@@ -1242,6 +1242,7 @@ button{
 /* wireframe loop: the PNGs carry their own phone shadow, so no frame around them */
 .cs-marquee.wf .cs-img{background:none;border:0;border-radius:0;box-shadow:none;height:480px}
 @media(max-width:600px){.cs-marquee.wf .cs-img{height:360px}}
+
 /* ---------- City Farmers Nursery (brand case page) ---------- */
 .cfn-sub{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.35rem;margin:34px 0 4px}
 .cfn-personas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:26px}
@@ -1286,3 +1287,46 @@ button{
 @media(max-width:900px){.cfn-personas,.cfn-apps{grid-template-columns:1fr}.cfn-swatches{grid-template-columns:repeat(2,minmax(0,1fr))}.cfn-type{grid-template-columns:1fr}.cfn-group.wide .cfn-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.cfn-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.cfn-tiles .cs-img{height:170px}.cfn-type-list{grid-template-columns:1fr}}
 .cfn-group.fleet .cfn-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.cfn-group.fleet .cs-img{height:260px}
+
+/* ---------- City Farmers Nursery · research sections (NEW) ---------- */
+.cfn-quotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+.cfn-quotes blockquote{margin:0;padding:20px 22px;border-radius:16px;background:rgba(144,179,87,.1);border-left:3px solid var(--c);color:#e9f0dd;font-family:'DM Serif Display',serif;font-style:italic;font-size:1.2rem;line-height:1.45}
+.cfn-quotes cite{display:block;margin-top:10px;font:500 .78rem Inter,sans-serif;font-style:normal;color:var(--muted);letter-spacing:.04em}
+.cfn-practices{list-style:none;counter-reset:p;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0;padding:0}
+.cfn-practices li{counter-increment:p;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+.cfn-practices li::before{content:counter(p,decimal-leading-zero);font:600 .7rem Inter,sans-serif;letter-spacing:.14em;color:var(--c)}
+.cfn-practices b{font-weight:600;font-size:.95rem}
+.cfn-practices span{color:var(--muted);font-size:.84rem;line-height:1.6}
+.cfn-story{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.cfn-story>div{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:6px}
+.cfn-story .ball{--s:30px;margin-bottom:6px}
+.cfn-story b{font-weight:600;font-size:.98rem}
+.cfn-story p{color:var(--muted);font-size:.88rem;line-height:1.7}
+.cfn-story q{margin-top:auto;color:var(--c);font-family:'DM Serif Display',serif;font-style:italic;font-size:1.05rem}
+.cfn-journey{margin-top:22px;overflow-x:auto;border:1px solid var(--border);border-radius:16px;background:var(--card)}
+.cfn-jgrid{display:grid;grid-template-columns:128px repeat(6,minmax(130px,1fr));min-width:920px}
+.cfn-jgrid>*{padding:12px 14px;border-bottom:1px solid var(--border);margin:0}
+.cfn-jgrid>p{color:var(--muted);font-size:.82rem;line-height:1.55;border-left:1px solid var(--border)}
+.cfn-jgrid>p.op{color:var(--c)}
+.cfn-jl{font:600 .64rem Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);align-self:stretch}
+.cfn-jh{font-weight:600;font-size:.88rem;border-left:1px solid var(--border)}
+.cfn-jgrid>:nth-last-child(-n+7){border-bottom:0}
+.cfn-curve{grid-column:span 6;border-left:1px solid var(--border)}
+.cfn-curve svg{display:block;width:100%;height:90px}
+.cfn-curve polyline{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.cfn-curve .cfn-today{stroke:#E0784A;stroke-dasharray:6 6}
+.cfn-curve .cfn-new{stroke:var(--c)}
+.cfn-curve .cfn-mid{stroke:var(--border);stroke-width:1;vector-effect:non-scaling-stroke}
+.cfn-legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:6px;font-size:.76rem;color:var(--muted)}
+.cfn-legend span::before{content:'';display:inline-block;width:18px;height:0;border-top:3px solid var(--c);vertical-align:middle;margin-right:6px}
+.cfn-legend .t::before{border-top:3px dashed #E0784A}
+.cfn-tree{display:flex;flex-direction:column;align-items:center}
+.cfn-tree .root{background:var(--c);color:#0b0d15;font-weight:600;border-radius:50px;padding:10px 26px;font-size:.92rem;position:relative}
+.cfn-tree .root::after{content:'';position:absolute;left:50%;top:100%;height:18px;border-left:1px solid color-mix(in srgb,var(--c) 60%,transparent)}
+.cfn-tree .kids{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;width:100%;margin-top:18px;padding-top:18px;border-top:1px solid color-mix(in srgb,var(--c) 60%,transparent)}
+.cfn-tree .kids div{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 16px}
+.cfn-tree .kids b{display:block;font-weight:600;font-size:.95rem;margin-bottom:4px}
+.cfn-tree .kids small{color:var(--muted);font-size:.8rem;line-height:1.55}
+.cfn-status{display:inline-block;margin-left:10px;padding:3px 10px;border-radius:50px;border:1px dashed var(--c);font-size:.62rem;letter-spacing:.12em;vertical-align:middle}
+@media(max-width:900px){.cfn-practices{grid-template-columns:repeat(2,minmax(0,1fr))}.cfn-story{grid-template-columns:1fr 1fr}.cfn-tree .kids{grid-template-columns:1fr 1fr}.cfn-quotes{grid-template-columns:1fr}}
+@media(max-width:560px){.cfn-practices,.cfn-story,.cfn-tree .kids{grid-template-columns:1fr}}
