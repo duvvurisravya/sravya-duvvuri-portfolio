@@ -176,3 +176,42 @@ document.addEventListener('click', e => {
   lb.addEventListener('click', close); addEventListener('keydown', esc);
   document.body.appendChild(lb); requestAnimationFrame(() => lb.classList.add('on'));
 });
+
+// Final screens that mix greyscale wireframes and colour designs: sort them into two loops.
+// Each image is sampled inside the device screen area; grey ones move to the Wireframes loop.
+// If an image can't be read (blocked by the host), everything stays in the single colour loop.
+document.querySelectorAll('.cs-marquee[data-split]').forEach(async fin => {
+  const wfSec = document.getElementById(fin.dataset.split);
+  const urls = JSON.parse(fin.dataset.urls), name = fin.dataset.name || '';
+  const isGrey = u => new Promise(res => {
+    const im = new Image();
+    im.crossOrigin = 'anonymous';
+    im.onload = () => {
+      try {
+        const W = 80, H = Math.max(1, Math.round(80 * im.naturalHeight / im.naturalWidth));
+        const c = document.createElement('canvas'); c.width = W; c.height = H;
+        const x = c.getContext('2d'); x.drawImage(im, 0, 0, W, H);
+        const d = x.getImageData(Math.round(W * .2), Math.round(H * .15), Math.round(W * .6), Math.round(H * .6)).data;
+        let hot = 0, n = 0;
+        for (let i = 0; i < d.length; i += 4) { n++; if (Math.max(d[i], d[i + 1], d[i + 2]) - Math.min(d[i], d[i + 1], d[i + 2]) > 50) hot++; }
+        res(hot / n < 0.03);
+      } catch (e) { res(null); }
+    };
+    im.onerror = () => res(null);
+    im.src = u;
+  });
+  const flags = await Promise.all(urls.map(isGrey));
+  if (flags.some(f => f === null)) return;
+  const grey = urls.filter((u, i) => flags[i]), colour = urls.filter((u, i) => !flags[i]);
+  if (!grey.length || !colour.length) return;
+  const fill = (mq, list, label) => {
+    const one = list.map((u, k) => `<img class="cs-img" src="${u}" alt="${name} ${label} ${k + 1}" loading="lazy"/>`).join('');
+    const two = list.map(u => `<img class="cs-img" src="${u}" alt="" aria-hidden="true" loading="lazy"/>`).join('');
+    mq.querySelector('.cs-track').innerHTML = one + two;
+    mq.style.setProperty('--count', list.length);
+  };
+  fill(fin, colour, 'visual design');
+  fill(wfSec.querySelector('.cs-marquee'), grey, 'wireframe');
+  wfSec.hidden = false;
+  wfSec.querySelectorAll('.sr').forEach(el => el.classList.add('vis'));
+});
