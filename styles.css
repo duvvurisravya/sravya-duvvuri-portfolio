@@ -1330,15 +1330,13 @@ button{
 .cfn-status{display:inline-block;margin-left:10px;padding:3px 10px;border-radius:50px;border:1px dashed var(--c);font-size:.62rem;letter-spacing:.12em;vertical-align:middle}
 @media(max-width:900px){.cfn-practices{grid-template-columns:repeat(2,minmax(0,1fr))}.cfn-story{grid-template-columns:1fr 1fr}.cfn-tree .kids{grid-template-columns:1fr 1fr}.cfn-quotes{grid-template-columns:1fr}}
 @media(max-width:560px){.cfn-practices,.cfn-story,.cfn-tree .kids{grid-template-columns:1fr}}
-/* Contact: S and D balls hop and light up in turn */
-.rack-hop{position:relative;width:124px;height:76px;margin:0 auto 22px}
-.rack-hop .ball{--s:56px;position:absolute;animation:rackhop 2.4s ease-in-out infinite}
-.rack-hop .ball:nth-child(1){left:0;top:14px;animation-delay:0s}
-.rack-hop .ball:nth-child(2){left:66px;top:14px;animation-delay:.3s}
-@keyframes rackhop{
-  0%,30%,100%{transform:translateY(0);filter:none}
-  10%{transform:translateY(-14px);filter:drop-shadow(0 0 12px rgba(242,194,48,.75)) brightness(1.15)}
-  18%{transform:translateY(0)}
-  23%{transform:translateY(-4px)}
+/* Contact: one SD ball hops, glows, rests, repeats */
+.sd-hop{height:96px;align-items:flex-end}
+.sd-hop .ball{--s:72px;animation:sdhop 2.4s ease-in-out infinite}
+@keyframes sdhop{
+  0%,40%,100%{transform:translateY(0);filter:none}
+  14%{transform:translateY(-18px);filter:drop-shadow(0 0 14px rgba(242,194,48,.7)) brightness(1.1)}
+  26%{transform:translateY(0)}
+  32%{transform:translateY(-5px)}
 }
-@media (prefers-reduced-motion:reduce){.rack-hop .ball{animation:none}}
+@media (prefers-reduced-motion:reduce){.sd-hop .ball{animation:none}}
